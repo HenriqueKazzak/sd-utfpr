@@ -1,0 +1,11 @@
+spring.application.name: external-service
+
+
+spring:
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+server:
+  port: 8085
