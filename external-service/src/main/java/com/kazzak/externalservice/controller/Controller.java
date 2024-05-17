@@ -16,16 +16,6 @@ public class Controller {
     @Autowired
     ProducerRabbit producerRabbit;
 
-    @GetMapping("api/v1/pedidos")
-    public ResponseEntity<Pedido> getResponse() {
-        Pedido pedido = new Pedido();
-        pedido.cliente = "João";
-        pedido.produto = "TV";
-        pedido.valor = "2000";
-        pedido.data = "2021-09-01";
-        return ResponseEntity.ok(pedido);
-    }
-
     @PostMapping("api/v1/cliente")
     public ResponseEntity<String> cadastra(@RequestBody Cliente cliente){
         producerRabbit.send(cliente);

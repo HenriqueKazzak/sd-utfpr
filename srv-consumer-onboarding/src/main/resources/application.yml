@@ -6,3 +6,16 @@ spring:
     password: guest
     host: 172.22.0.2
     port: 5672
+  h2.console.enabled: true
+  datasource:
+    url: jdbc:h2:mem:onboarding
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect

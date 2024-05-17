@@ -14,9 +14,8 @@ class ServiceWebClient(private val webClient: WebClient) {
 
     private val log = LoggerFactory.getLogger(this.javaClass)
 
-
     @CircuitBreaker(name = "externalService", fallbackMethod = "fallback")
-    fun post(request:ClientData): Mono<String> {
+    fun post(request: String): Mono<String> {
        return webClient.post()
             .uri("/api/v1/cliente")
             .body(BodyInserters.fromValue(request))
@@ -26,7 +25,7 @@ class ServiceWebClient(private val webClient: WebClient) {
             .onErrorResume { throwable -> Mono.error(throwable)}
     }
 
-    fun fallback(clientData: ClientData,throwable: Throwable): String {
+    fun fallback(clientData:  ByteArray,throwable: Throwable): String {
         log.error("Fallback called with exception: $throwable")
         return "Fallback response"
     }
